@@ -16,4 +16,13 @@
     font-size: 1.2rem;
     color: #666;
   }
+  .profile-container{
+    position: relative;
+    top: 100px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+
+  }
   
