@@ -2,7 +2,8 @@ import axios from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit'
 
 
-const url='http://localhost:5000'
+// const url='http://localhost:5000'
+const url = 'https://sperax-fullstack-blockchain-developer.onrender.com'
 
 export const registerUser = createAsyncThunk('auth/register',
     async({firstName,email,password},{rejectWithValue})=>{
