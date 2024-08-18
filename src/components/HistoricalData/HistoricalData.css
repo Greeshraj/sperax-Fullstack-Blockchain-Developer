@@ -1,0 +1,86 @@
+/* src/HistoricalData.css */
+.historical-data {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .historical-data h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .historical-data label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+  
+  .historical-data input[type="date"] {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-left: 10px;
+  }
+  
+  .historical-data button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .historical-data button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .historical-data button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .historical-balance {
+    margin-top: 20px;
+  }
+  
+  .historical-balance h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .historical-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .historical-table th,
+  .historical-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .historical-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .historical-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  

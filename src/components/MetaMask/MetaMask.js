@@ -2,6 +2,9 @@ import React, { useState,useEffect } from 'react';
 import { formatEther } from 'ethers/lib/utils';
 import TokenAdder from '../Tokenadder/tokenAdder';
 import WatchList from '../WatchList/WatchList';
+import './MetaMask.css';
+
+
 export default function MetaMask({ addTokenToWatchList }) {
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [errors, setErrors] = useState(null);
@@ -68,10 +71,6 @@ export default function MetaMask({ addTokenToWatchList }) {
         console.log(tokenAddress);
         console.log("let we enter in to adder");
         setShowTokenAdder(true);
-        // <TokenAdder address={tokenAddress}/>
-        // // Add the token to the watch list
-        // addTokenToWatchList(tokenAddress);
-        // setTokenAddress(''); // Clear the input after adding
     };
 
     async function sendTransaction(event){

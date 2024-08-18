@@ -44,17 +44,28 @@ export default function WatchList({ watchList }) {
   return (
     <div className="watchlist-container">
       <h2 className="watchlist-title">Token Watch List</h2>
-      <ul className="watchlist">
-        {watchList.map((token, index) => (
-          <li key={index} className="watchlist-item">
-            <span className="token-address">{token}</span>
-            <span className="token-balance">Balance: {balances[index]} ETH</span>
-            <button onClick={() => handleShowPopout(token)} className="data-selector-button">
-              View Historical Data
-            </button>
-          </li>
-        ))}
-      </ul>
+      <table className="watchlist-table">
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Balance (ETH)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {watchList.map((token, index) => (
+            <tr key={index} className="watchlist-item">
+              <td className="token-address">{token}</td>
+              <td className="token-balance">{balances[index]}</td>
+              <td>
+                <button onClick={() => handleShowPopout(token)} className="data-selector-button">
+                  View Historical Data
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {showPopout && selectedToken && (
         <Popout tokenId={selectedToken} onClose={handleClosePopout} />
       )}
