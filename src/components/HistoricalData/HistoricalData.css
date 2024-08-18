@@ -1,5 +1,7 @@
 /* src/HistoricalData.css */
 .historical-data {
+   position: relative;
+    /* top: 30vh; */
     font-family: Arial, sans-serif;
     background-color: #fff;
     padding: 20px;
@@ -53,6 +55,7 @@
   
   .historical-balance {
     margin-top: 20px;
+    
   }
   
   .historical-balance h3 {
