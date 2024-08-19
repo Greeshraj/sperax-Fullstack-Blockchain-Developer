@@ -1,53 +1,46 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
-import { useMatch, useNavigate } from 'react-router-dom';
-import {registerUser} from '../features/auth/authActions';
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../features/auth/authActions';
 
 const Register = () => {
+  const { loading, userInfo, error, success } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-  const {loading,userInfo,error,success}=useSelector((state)=>state.auth)
-  const dispatch = useDispatch()
-
-  const [firstName, setfirstName] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(success){
-      alert('Register Successfully')
+  useEffect(() => {
+    if (success) {
+      alert('Registered Successfully');
       navigate('/login');
     }
-    if(userInfo){
-      navigate('/user-profile')
+    if (userInfo) {
+      navigate('/user-profile');
     }
-  },[navigate,userInfo,success])
-  
+  }, [navigate, userInfo, success]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      alert('Passwords do not match!');
       return;
     }
-    const data={
-      firstName,email,password
-    }
-    // Handle form submission logic here
-    console.log('Username:', firstName);
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    data.email=data.email.toLowerCase()
+    const data = {
+      firstName,
+      email: email.toLowerCase(),
+      password,
+    };
     console.log(data);
     dispatch(registerUser(data));
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '0 auto' ,position:'relative',top:'100px'}}>
+    <div style={{ maxWidth: '400px', margin: '0 auto', position: 'relative', top: '100px' }}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '10px' }}>
@@ -56,7 +49,7 @@ const Register = () => {
             <input
               type="text"
               value={firstName}
-              onChange={(e) => setfirstName(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value)}
               style={{ width: '100%', padding: '8px', margin: '5px 0' }}
             />
           </label>
@@ -94,10 +87,41 @@ const Register = () => {
             />
           </label>
         </div>
-        <button type="submit" style={{ padding: '10px 20px', cursor:'pointer' }}>
-          Register
+        <button
+          type="submit"
+          style={{ padding: '10px 20px', cursor: loading ? 'not-allowed' : 'pointer', position: 'relative' }}
+          disabled={loading}
+        >
+          {loading ? (
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span
+                className="spinner"
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  border: '3px solid rgba(0, 0, 0, 0.1)',
+                  borderRadius: '50%',
+                  borderTopColor: '#000',
+                  animation: 'spin 1s linear infinite',
+                  marginRight: '8px'
+                }}
+              ></span>
+              Registering...
+            </span>
+          ) : (
+            'Register'
+          )}
         </button>
       </form>
+
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+      </style>
     </div>
   );
 };
